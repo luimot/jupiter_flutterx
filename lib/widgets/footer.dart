@@ -24,6 +24,7 @@ class _FooterState extends State<Footer> {
         return DropdownMenuItem<String>(
           value: value,
           child: Text(value),
+          onTap: () => {portData.selectPort(value)},
         );
       }).toList();
 

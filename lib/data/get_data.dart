@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_libserialport/flutter_libserialport.dart';
@@ -30,6 +31,18 @@ class Data {
 
   void selectPort(String portName) {
     if (isPortAvailable(portName)) selectedPort = SerialPort(portName);
+    // if (selectedPort!.openWrite()) {
+    //   // selectedPort!.config.baudRate = 115200;
+    //   // selectedPort!.config.stopBits = 0;
+    //   // selectedPort!.config = selectedPort!.config;
+    //   final conf = SerialPortConfig();
+    //   conf.baudRate = 115200;
+    //   conf.bits = 8;
+    //   conf.parity = 0;
+    //   if (selectedPort != null) selectedPort!.config = conf;
+    //   // selectedPort!.config = conf;
+    // }
+    getData();
     //Exception
   }
 
@@ -40,10 +53,12 @@ class Data {
         debugPrint(SerialPort.lastError.toString());
       }
 
-      final reader = SerialPortReader(selectedPort!);
-      reader.stream.listen((data) {
-        //rawData = jsonDecode(data.toString()); // TODO:Probably wrong
-        debugPrint('received: $data');
+      SerialPortReader reader = SerialPortReader(selectedPort!);
+      Stream<String> upcomingData = reader.stream.map((data) {
+        return String.fromCharCodes(data);
+      });
+      upcomingData.listen((data) {
+        debugPrint('Got Data: $data');
       });
     }
   }
