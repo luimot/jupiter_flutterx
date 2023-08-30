@@ -44,7 +44,8 @@ def get_ports():
 @app.post("/ports/{port}")
 def selectPort(port: str):
     # Checks again whether the port is still usable
-    print(port)
+    hasMatch = False
+    print("Checking for " + port + " port availability")
     ports = listPorts()
     for p in ports:
         if port in p:
@@ -52,56 +53,46 @@ def selectPort(port: str):
             hasMatch = True
     if not hasMatch:
         raise HTTPException(status_code=404, detail="Serial port not found.")
-    # TODO: Finish serial logic
     conn = connection(thisPort)
     return{"confirmation": f"Port {thisPort} selected"}
-
-# async def stream():
-#     async def event_generator():
-#         if conn.connected:
-#             while True:
-#                 data = conn.readPort(256)
-#                 if not data:
-#                     await asyncio.sleep(0.1)  # Aguarda 0.1 segundo se não houver dados
-#                     continue
-#                 yield b"data: " + data + b"\n\n"
-
-#     return StreamingResponse(event_generator(), media_type="text/event-stream")
-# ws
-# @app.get("/stream_ports")
-# async def get_stream_ports():
-#     return await stream()
 
 @app.websocket("/ws/{port}")
 async def websocket_endpoint(websocket: WebSocket,port: str):
     ports = listPorts()
+    hasMatch = False
+    print("Checking for " + port + " port availability")
     for p in ports:
         if port in p:
             thisPort = p
             hasMatch = True
     if not hasMatch:
+        print("Exception while connection to the port")
+        print("Port " + port + " not available")
         raise HTTPException(status_code=404, detail="Serial port not found.")
-    # TODO: Finish serial logic
-    conn = connection(thisPort)
-    print("Listening to " + thisPort)
-    await websocket.accept()
-    websocket_clients.append(websocket)
-    if conn.connected:
-        print("Connected")
-        try:
-            while True:
-                print("Reading data...")
-                data = conn.ser.readline().decode().strip()  # Read from serial port
-                if data:
-                    print("Data acquired")
-                    await asyncio.gather(
-                        *[
-                            client.send_text(data) for client in websocket_clients
-                        ]
-                    )
-        except:
-            print("Exception while reading !")
-            pass
-        finally:
-            print("Disconnecting...")
-            websocket_clients.remove(websocket)
+    else:
+        conn = connection(thisPort)
+        print("Listening to " + thisPort)
+        await websocket.accept()
+        websocket_clients.append(websocket)
+        if conn.connected:
+            print("Connected")
+            try:
+                while True:
+                    data = conn.ser.readline().decode().strip()  # Read from serial port
+                    if data:
+                        await asyncio.gather(
+                            *[
+                                client.send_text(data) for client in websocket_clients
+                            ]
+                        )                
+            except Exception as error:
+                print("Exception while reading !")
+                if(type(error).__name__ == "SerialException"):
+                    print("Error while reading serial port, possible disconnection...")
+                else:
+                    print(type(error).__name__)
+                    print(error)
+                pass
+            finally:
+                print("Disconnecting...")
+                websocket_clients.remove(websocket)
