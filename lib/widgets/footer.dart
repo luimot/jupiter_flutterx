@@ -16,16 +16,24 @@ class _FooterState extends State<Footer> {
   static const double statTextWidth = 100;
   String? _selectedPort;
   String? _currentMeasure;
-  Data portData = Data();
+  // Data portData = Data();
   bool _isPortConnected = false;
 
   List<DropdownMenuItem> get _availablePorts =>
-      portData.getPorts().map<DropdownMenuItem<String>>((String value) {
+      // portData.getPorts().map<DropdownMenuItem<String>>((String value) {
+      //   return DropdownMenuItem<String>(
+      //       value: value,
+      //       child: Text(value),
+      //       onTap: () => {} //() => {portData.selectPort(value)},
+      //       );
+      // }
+      // ).toList();
+      ['/dev/ACM0', '/dev/ACM1'].map<DropdownMenuItem<String>>((String value) {
         return DropdownMenuItem<String>(
-          value: value,
-          child: Text(value),
-          onTap: () => {portData.selectPort(value)},
-        );
+            value: value,
+            child: Text(value),
+            onTap: () => {} //() => {portData.selectPort(value)},
+            );
       }).toList();
 
   List<DropdownMenuItem> get _hourMeasures => [

@@ -1,0 +1,40 @@
+{
+	"temperatura_LPS22HB": 34,
+	"humidity": 65,
+	"number_of_satellites": 0,
+	"gps_fix": 0,
+	"pressure": 537,
+	"temperatura_HTS221": 34,
+	"time": 76480,
+	"timeStamp": 0,
+	"latitude": -23.37479782,
+	"longitude": -47.82999802,
+	"altitude": 0,
+	"gps_speed": 0,
+	"rx_rssi": -30,
+	"": {
+		"x": 41,
+		"y": -496,
+		"z": 3462
+	},
+	"accelerometer": {
+		"x": -438,
+		"y": 91,
+		"z": -137
+	},
+	"gyro_accelerometer": {
+		"x": 202,
+		"y": 158,
+		"z": -504
+	},
+	"angular_velocity": {
+		"x": -104183,
+		"y": 74336,
+		"z": -18942
+	},
+	"heading": {
+		"x": 41,
+		"y": -496,
+		"z": 3462
+	}
+}
