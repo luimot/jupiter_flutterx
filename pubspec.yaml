@@ -39,6 +39,8 @@ dependencies:
   syncfusion_flutter_charts: 20.1.47
   flutter_map: ^1.1.1
   lat_lon_grid_plugin: ^0.2.2
+  json_annotation: ^4.8.1
+  build_runner: ^2.3.3
 
 dev_dependencies:
   flutter_test:
@@ -50,6 +52,7 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^1.0.0
+  json_serializable: ^6.6.2
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
