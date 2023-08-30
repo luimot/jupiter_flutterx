@@ -35,4 +35,8 @@ And then for using uvicorn in debug:
 $ uvicorn serialServer:app --reload --port 3000
 ```
 
+## References
+
+Naming:
+
 [Radagast (Adûnaic; IPA: ['radagast] - "Tender Of Beasts")](https://lotr.fandom.com/wiki/Radagast)
