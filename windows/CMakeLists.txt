@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.14)
-project(jupiter_flutterx LANGUAGES CXX)
+project(radagast LANGUAGES CXX)
 
-set(BINARY_NAME "jupiter_flutterx")
+set(BINARY_NAME "radagast")
 
 cmake_policy(SET CMP0063 NEW)
 

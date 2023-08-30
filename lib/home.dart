@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:jupiter_flutterx/data/get_data.dart';
-import 'package:jupiter_flutterx/gps/satellite_view.dart';
-import 'package:jupiter_flutterx/plot_widgets/accelerometer.dart';
-import 'package:jupiter_flutterx/plot_widgets/barometer.dart';
-import 'package:jupiter_flutterx/plot_widgets/battery.dart';
-import 'package:jupiter_flutterx/plot_widgets/gyroscope.dart';
-import 'package:jupiter_flutterx/widgets/field_container.dart';
-import 'package:jupiter_flutterx/widgets/footer.dart';
-import 'package:jupiter_flutterx/widgets/statuses.dart';
+import 'package:radagast/data/get_data.dart';
+import 'package:radagast/gps/satellite_view.dart';
+import 'package:radagast/plot_widgets/accelerometer.dart';
+import 'package:radagast/plot_widgets/barometer.dart';
+import 'package:radagast/plot_widgets/battery.dart';
+import 'package:radagast/plot_widgets/gyroscope.dart';
+import 'package:radagast/widgets/field_container.dart';
+import 'package:radagast/widgets/footer.dart';
+import 'package:radagast/widgets/statuses.dart';
 import 'package:resizable_widget/resizable_widget.dart';
 
 class Home extends StatelessWidget {

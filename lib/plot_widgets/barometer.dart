@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:jupiter_flutterx/plot_widgets/plotter.dart';
-import 'package:jupiter_flutterx/widgets/field_container.dart';
+import 'package:radagast/plot_widgets/plotter.dart';
+import 'package:radagast/widgets/field_container.dart';
 
 class BarometerPlots extends StatefulWidget {
   const BarometerPlots({Key? key}) : super(key: key);
