@@ -41,6 +41,7 @@ dependencies:
   lat_lon_grid_plugin: ^0.2.2
   json_annotation: ^4.8.1
   build_runner: ^2.3.3
+  web_socket_channel: ^2.4.0
 
 dev_dependencies:
   flutter_test:
